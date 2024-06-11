@@ -78,19 +78,35 @@ function imprime_tabela($docs){
     $i = 0;
     $tabela = "<figure class='wp-block-table is-style-stripes'>\n";
     $tabela .= "
-        <style>
-            table.docentes td:first-child img {
-                max-height: 150px; /* Altura de 100 pixels para manter a proporção 3x4 */
-                object-fit: cover; /* Para garantir que a imagem preencha a área definida */
-            }
-            table.docentes tr {
+    <style>
+        .docentes table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .docentes th, .docentes td {
+            padding: 8px;
+        }
+
+        .docentes th {
+            background-color: #f2f2f2;
+        }
+
+        .docentes td:first-child img {
+            max-height: 150px; /* Ajusta a altura máxima para 150px */
+            object-fit: cover;
+        }
+
+        .docentes tr {
             padding: 10px;
-            }
-            /* Corrige padding para células <td> dentro de <tr> */
-            table.docentes tr td {
-                padding: 10px;
-            }
-        </style>";
+        }
+
+        /* Estilo para links dentro da tabela */
+        .docentes table a {
+            color: inherit; /* Herdar a cor do elemento pai */
+            text-decoration: none; /* Remover sublinhado */
+        }
+    </style>";
     $tabela.= "<table class='wp-block docentes'>";
     foreach ($docs as $doc){
         
