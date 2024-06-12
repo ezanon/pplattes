@@ -36,6 +36,8 @@
           
 <?php
 
+echo "<h5>Departamento</h5>\n";
+echo "<p>$departamento</p>";
 echo "<h5>Contato</h5>\n";
 echo "<div class=mb-2><p>E-Mail: $emailPessoa<br>\n\n";
 echo "Telefone: $fonePessoa</p></div>\n\n";
@@ -54,8 +56,8 @@ if ($linhasDePesquisaLattes){
     echo "</p>";
 }
 
-echo "<h5>Nome em citações bibliográficas</h5>\n";
-echo "<div class=mb-2><p>" . implode('; ',$nomesCitacoesLattes) . "</p></div>\n\n";
+//echo "<h5>Nome em citações bibliográficas</h5>\n";
+//echo "<div class=mb-2><p>" . implode('; ',$nomesCitacoesLattes) . "</p></div>\n\n";
 
 
 ?>
@@ -65,7 +67,7 @@ echo "<div class=mb-2><p>" . implode('; ',$nomesCitacoesLattes) . "</p></div>\n\
     </div>
   </div>
     
-  <!-- Célula abaixo da outra para dispositivos móveis -->
+  <!-- RESUMO -->
   <div class="row mt-4">
     <div class="col-md-12">
       <div class="card border-0">
@@ -85,9 +87,43 @@ echo "<div><p><em>Última Atualização em $ultimaAtualizacaoLattes</em></p></di
         </div>
       </div>
     </div>
-  </div>    
+  </div>  
 
-  <!-- Célula abaixo da outra para dispositivos móveis -->
+  <!-- FORMAÇÃO ACADÊMICA -->
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="card border-0">
+        <div class="card-header border-0">   
+          <h5>Formação Acadêmica</h5>
+        </div>
+        <div class="card-body">
+            <div><p>
+
+<?php
+
+    foreach ($formacaoAcademica as $tipo=>$f){
+        foreach ($f as $ff){
+            switch ($tipo){
+                case 'GRADUACAO': $tipoo = 'Graduação'; break;
+                case 'DOUTORADO': $tipoo = 'Doutorado'; break;
+                case 'POS-DOUTORADO': $tipoo = 'Pós-Doutorado'; break;
+            }
+            echo "<p><b>$tipoo</b><br>";
+            echo $ff['NOME-CURSO'] ? "Curso: {$ff['NOME-CURSO']}<br>" : "";
+            echo $ff['NOME-INSTITUICAO'] ? "Instituição: {$ff['NOME-INSTITUICAO']}<br>" : "";
+            echo $ff['ANO-DE-CONCLUSAO'] ? "Ano de Conclusão: {$ff['ANO-DE-CONCLUSAO']}<br>" : "";
+            echo "</p>";
+        }
+    }
+
+?>            
+                </p></div>  
+        </div>
+      </div>
+    </div>
+  </div>   
+
+  <!-- ULTIMOS ARTIGOS -->
   <div class="row mt-4">
     <div class="col-md-12">
       <div class="card border-0">

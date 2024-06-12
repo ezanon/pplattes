@@ -35,8 +35,11 @@ $resumoLattes = Lattes::retornarResumoCV($codpes);
 $ultimaAtualizacaoLattes = Lattes::retornarDataUltimaAtualizacao($codpes);
 $linhasDePesquisaLattes = Lattes::listarLinhasPesquisa($codpes);
 $ultimosArtigosLattes = Lattes::listarArtigos($codpes,$arrayLattes,'registros',10);
-$formacaoAcademicaLattes = Lattes::retornarFormacaoAcademica($codpes);
+$formacaoAcademica = Lattes::retornarFormacaoAcademica($codpes);
 $nomeCitacoesLattes = $arrayLattes['DADOS-GERAIS']['@attributes']['NOME-EM-CITACOES-BIBLIOGRAFICAS'];
 $nomesCitacoesLattes = explode(';', $nomeCitacoesLattes);
 $linkLattesPessoa = get_lattes($codpes);
 $linkOrcidPessoa = get_orcid($codpes);
+
+$departamento = Pessoa::obterSiglasSetoresAtivos($codpes);
+$departamento = $departamento=='GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Geoquímica e Geotectônica';
