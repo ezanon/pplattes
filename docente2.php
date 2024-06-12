@@ -109,6 +109,8 @@ echo "<div><p><em>Última Atualização em $ultimaAtualizacaoLattes</em></p></di
                 case 'DOUTORADO': $tipoo = 'Doutorado'; break;
                 case 'POS-DOUTORADO': $tipoo = 'Pós-Doutorado'; break;
                 case 'LIVRE-DOCENCIA': $tipoo = 'Livre Docência'; break;
+                case 'ESPECIALIZACAO': $tipoo = 'Especialização'; break;
+                
             }
             echo "<p><b>$tipoo</b><br>";
             echo $ff['NOME-CURSO'] ? "Curso: {$ff['NOME-CURSO']}<br>" : "";
