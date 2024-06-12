@@ -20,7 +20,7 @@
         </div>
         <div class="card-body  text-center">
           <!-- Área para uma fotografia -->
-          <?php echo "<img src=$foto class=img-fluid>"; ?>
+          <?php echo "<img src=$foto class=img-fluid style=\"max-width: 200px;\">"; ?>
         </div>
       </div>
     </div>
