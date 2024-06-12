@@ -105,8 +105,10 @@ echo "<div><p><em>Última Atualização em $ultimaAtualizacaoLattes</em></p></di
         foreach ($f as $ff){
             switch ($tipo){
                 case 'GRADUACAO': $tipoo = 'Graduação'; break;
+                case 'MESTRADO': $tipoo = 'Mestrado'; break;
                 case 'DOUTORADO': $tipoo = 'Doutorado'; break;
                 case 'POS-DOUTORADO': $tipoo = 'Pós-Doutorado'; break;
+                case 'LIVRE-DOCENCIA': $tipoo = 'Livre Docência'; break;
             }
             echo "<p><b>$tipoo</b><br>";
             echo $ff['NOME-CURSO'] ? "Curso: {$ff['NOME-CURSO']}<br>" : "";
