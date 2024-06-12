@@ -43,7 +43,7 @@ foreach ($siglasdeptoss as $siglasdeptos){
             $$nomdepto[$codpes]['nome'] = $docente['nompes'];
             $$nomdepto[$codpes]['linkLattes'] = "<a target=_blank href=" . $linkLattes . Lattes::id($codpes) . "><img width=16px src=$iconLattes /></a>";
             $$nomdepto[$codpes]['email'] = $docente['codema']; 
-            $$nomdepto[$codpes]['departamento'] = $nomdepto == 'GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Geoquímica e Geotectônica';
+            $$nomdepto[$codpes]['departamento'] = $nomdepto == 'GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Mineralogia e Geotectônica';
 
             $telefone = $docente['numtelfmt'];
 //            $telefone = explode(' - ', $telefone);

@@ -42,4 +42,4 @@ $linkLattesPessoa = get_lattes($codpes);
 $linkOrcidPessoa = get_orcid($codpes);
 
 $departamento = Pessoa::obterSiglasSetoresAtivos($codpes);
-$departamento = $departamento=='GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Geoquímica e Geotectônica';
+$departamento = $departamento=='GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Mineralogia e Geotectônica';
