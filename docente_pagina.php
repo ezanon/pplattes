@@ -9,7 +9,8 @@ use Uspdev\Replicado\Pessoa;
 use Uspdev\Replicado\Lattes;
 use Uspdev\Wsfoto;
 
-require_once 'functions.php';
+require_once './functions.php';
+require_once './foto.php';
 
 $nomePessoa = Pessoa::obterNome($codpes);
 $emailPessoa = Pessoa::email($codpes);
@@ -41,5 +42,5 @@ $nomesCitacoesLattes = explode(';', $nomeCitacoesLattes);
 $linkLattesPessoa = get_lattes($codpes);
 $linkOrcidPessoa = get_orcid($codpes);
 
-$departamento = Pessoa::obterSiglasSetoresAtivos($codpes);
-$departamento = $departamento=='GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Mineralogia e Geotectônica';
+$depto = Pessoa::obterSiglasSetoresAtivos($codpes);
+$departamento = $depto[0]=='GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Mineralogia e Geotectônica';

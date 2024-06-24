@@ -12,7 +12,7 @@ use Uspdev\Wsfoto;
  * @return string Mensagem de sucesso ou erro.
  */
 function salvarFoto($codpes) {
-    echo 'foto ' . $codpes;
+    //echo 'foto ' . $codpes;
     
     try {
         $foto = Wsfoto::obter($codpes);
