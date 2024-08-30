@@ -39,8 +39,8 @@
 echo "<h5>Departamento</h5>\n";
 echo "<p>$departamento</p>";
 echo "<h5>Contato</h5>\n";
-echo "<div class=mb-2><p>E-Mail: $emailPessoa<br>\n\n";
-echo "Telefone: $fonePessoa</p></div>\n\n";
+echo "<div class=mb-2><p>$emailPessoa<br>\n\n";
+//echo "Telefone: $fonePessoa</p></div>\n\n";
 
 echo "<h5>Saiba mais nas bases de conhecimento</h5>\n";
 echo "<div class=mb-2><p>"

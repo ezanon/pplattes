@@ -43,6 +43,9 @@ foreach ($siglasdeptoss as $siglasdeptos){
             $$nomdepto[$codpes]['nome'] = $docente['nompes'];
             $$nomdepto[$codpes]['linkLattes'] = "<a target=_blank href=" . $linkLattes . Lattes::id($codpes) . "><img width=16px src=$iconLattes /></a>";
             $$nomdepto[$codpes]['email'] = $docente['codema']; 
+            $login = explode("@", $docente['codema']);
+            $$nomdepto[$codpes]['login'] = $login[0];
+            
             $$nomdepto[$codpes]['departamento'] = $nomdepto == 'GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Mineralogia e Geotectônica';
 
             $telefone = $docente['numtelfmt'];
@@ -110,16 +113,16 @@ function imprime_tabela($docs){
     $tabela.= "<table class='wp-block docentes'>";
     foreach ($docs as $doc){
         
-        $tabela.= "
+        $tabela.= "               
                 <tr>
-                    <td><a href=docente?codpes={$doc['codpes']} >{$doc['foto']}</a></td>\n
+                    <td><a href=/docente?codpes={$doc['codpes']} >{$doc['foto']}</a></td>\n
                     <td>
-                            <h3><a href=docente?codpes={$doc['codpes']} >{$doc['nome']}</a> {$doc['linkLattes']}</h3>
+                            <h3><a href=/docente?codpes={$doc['codpes']} >{$doc['nome']}</a> {$doc['linkLattes']}</h3>
                             {$doc['departamento']}
                             <br>{$doc['email']}
                             <br>{$doc['telefone']}
                     </td>
-                </tr>\n";
+                </tr>\n\n";
         
     }
     $tabela.= "</table>\n</figure>\n";
