@@ -64,7 +64,6 @@ if ($ods){
 //echo "<h5>Nome em citações bibliográficas</h5>\n";
 //echo "<div class=mb-2><p>" . implode('; ',$nomesCitacoesLattes) . "</p></div>\n\n";
 
-
 ?>
           
         </div>
