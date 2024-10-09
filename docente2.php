@@ -56,6 +56,11 @@ if ($linhasDePesquisaLattes){
     echo "</p>";
 }
 
+if ($ods){
+    echo "<h5>Objetivos de Desenvolvimento Sustentável (ODS)</h5>\n";
+    echo gerarIconesODS($ods);
+}
+
 //echo "<h5>Nome em citações bibliográficas</h5>\n";
 //echo "<div class=mb-2><p>" . implode('; ',$nomesCitacoesLattes) . "</p></div>\n\n";
 
@@ -113,9 +118,9 @@ echo "<div><p><em>Última Atualização em $ultimaAtualizacaoLattes</em></p></di
                 
             }
             echo "<p><b>$tipoo</b><br>";
-            echo $ff['NOME-CURSO'] ? "Curso: {$ff['NOME-CURSO']}<br>" : "";
-            echo $ff['NOME-INSTITUICAO'] ? "Instituição: {$ff['NOME-INSTITUICAO']}<br>" : "";
-            echo $ff['ANO-DE-CONCLUSAO'] ? "Ano de Conclusão: {$ff['ANO-DE-CONCLUSAO']}<br>" : "";
+            echo isset($ff['NOME-CURSO']) ? "Curso: {$ff['NOME-CURSO']}<br>" : "";
+            echo isset($ff['NOME-INSTITUICAO']) ? "Instituição: {$ff['NOME-INSTITUICAO']}<br>" : "";
+            echo isset($ff['ANO-DE-CONCLUSAO']) ? "Ano de Conclusão: {$ff['ANO-DE-CONCLUSAO']}<br>" : "";
             echo "</p>";
         }
     }
@@ -142,7 +147,11 @@ foreach ($ultimosArtigosLattes as $a){
     echo "<p>\n";
     
     // doi
-    if ($a['DADOS-BASICOS-DO-ARTIGO']['DOI']) echo "<pre><a href=#>[DOI]{$a['DADOS-BASICOS-DO-ARTIGO']['DOI']}</a></pre>";
+    if (isset($a['DADOS-BASICOS-DO-ARTIGO']['DOI'])) {
+        echo "<pre><a href='#'>[DOI]{$a['DADOS-BASICOS-DO-ARTIGO']['DOI']}</a></pre>";
+    }
+
+
     // co-autores do artigo
     $aux = array();    
     foreach ($a['AUTORES'] as $b){

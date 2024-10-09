@@ -8,6 +8,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Uspdev\Replicado\Pessoa;
 use Uspdev\Replicado\Lattes;
 use Uspdev\Wsfoto;
+use Ezanon\CoisasLocais\CoisasLocais;
 
 require_once './functions.php';
 require_once './foto.php';
@@ -19,6 +20,8 @@ $telefone = explode(' - ', $telefone);
 $telefone = explode(')', $telefone[0]);
 $fonePessoa = '(11)' . $telefone[1];
 $fonePessoa = Pessoa::obterRamalUsp($codpes);
+
+$ods = CoisasLocais::obterODS($codpes);
 
 $caminhoArquivo = __DIR__ . '/fotos/';
 // se foto existe
@@ -39,7 +42,7 @@ $ultimosArtigosLattes = Lattes::listarArtigos($codpes,$arrayLattes,'registros',1
 $formacaoAcademica = Lattes::retornarFormacaoAcademica($codpes);
 $nomeCitacoesLattes = $arrayLattes['DADOS-GERAIS']['@attributes']['NOME-EM-CITACOES-BIBLIOGRAFICAS'];
 $nomesCitacoesLattes = explode(';', $nomeCitacoesLattes);
-$linkLattesPessoa = get_lattes($codpes);
+$linkLattesPessoa = get_lattes($codpes); 
 $linkOrcidPessoa = get_orcid($codpes);
 
 $depto = Pessoa::obterSiglasSetoresAtivos($codpes);
