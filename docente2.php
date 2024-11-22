@@ -29,6 +29,7 @@
       <div class="card border-0">
         <div class="card-body  text-center">
           <!-- Área para uma fotografia -->
+          <?php echo "<img src=$foto class=img-fluid style=\"width: 100%;\">"; ?>
         </div>
       </div>
     </div>
