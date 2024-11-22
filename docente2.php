@@ -27,12 +27,8 @@
     <!-- Célula 1 -->
     <div class="col-md-4">
       <div class="card border-0">
-<!--        <div class="card-header border-0   text-center">
-          <h3><?php echo $nomePessoa; ?></h3> 
-        </div>-->
         <div class="card-body  text-center">
           <!-- Área para uma fotografia -->
-          <?php echo "<img src=$foto class=img-fluid style=\"max-width: 200px;\">"; ?>
         </div>
       </div>
     </div>

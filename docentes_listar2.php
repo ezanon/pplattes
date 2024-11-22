@@ -9,8 +9,6 @@ require_once 'config.php';
 require_once './foto.php';
 require_once './functions.php';
 
-//$siglasdeptoss[] = 'GMG,GGG';
-//$siglasdeptoss[] = 'GSA,GMP,GPE';
 $siglasdeptoss[] = 'GMG,GGG,GSA,GMP,GPE';
 
 foreach ($siglasdeptoss as $siglasdeptos){
@@ -34,35 +32,7 @@ foreach ($siglasdeptoss as $siglasdeptos){
                 'numtelfmt' => Pessoa::obterRamalUsp($ddv['codpes'])
             ];
             
-        }
-        
-//        $docentes[] = [
-//            'codpes' => 2143636,
-//            'nomabvset' => 'GSA',
-//            'nompes' => 'Fernando Antonio Medeiros Marinho',
-//            'codema' => 'fmarinho@usp.br',
-//            'numtelfmt' => '(0xx11)3091-5498 - ramal USP: 915498'
-//        ];
-//
-//        
-//        $docentes[] = [
-//            'codpes' => 208186,
-//            'nomabvset' => 'GSA',
-//            'nompes' => 'Déborah de Oliveira',
-//            'codema' => 'debolive@usp.br',
-//            'numtelfmt' => '(0xx11)3091-8577 - ramal USP: 918577'
-//        ];
-//        
-//        
-//        $docentes[] = [
-//            'codpes' => 74257,
-//            'nomabvset' => 'GMG',
-//            'nompes' => 'Colombo Celso Gaeta Tassinari',
-//            'codema' => 'ccgtassi@usp.br',
-//            'numtelfmt' => '(0xx11)3091-9123 - ramal USP: 919123'
-//        ];
-
-        
+        }    
        
         // cria array para cada departamento
         foreach ($depto as $coddepto=>$nomdepto){
@@ -93,9 +63,6 @@ foreach ($siglasdeptoss as $siglasdeptos){
             $$nomdepto[$codpes]['departamento'] = $nomdepto == 'GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Mineralogia e Geotectônica';
 
             $telefone = $docente['numtelfmt'];
-//            $telefone = explode(' - ', $telefone);
-//            $telefone = explode(')', $telefone[0]);
-//            $$nomdepto[$codpes]['telefone'] = '(11) ' . $telefone[1];
             $$nomdepto[$codpes]['telefone'] = $telefone = $docente['numtelfmt'];
         }
 
