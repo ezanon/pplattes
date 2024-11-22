@@ -5,3 +5,5 @@ php.php
 /vendor
 .htaccess
 array.php
+composer.lock
+/fotos/*
