@@ -3,6 +3,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 use Uspdev\Replicado\Pessoa;
 use Uspdev\Replicado\Lattes;
+use Ezanon\CoisasLocais\CoisasLocais;
 
 require_once 'config.php';
 require_once './foto.php';
@@ -19,7 +20,50 @@ foreach ($siglasdeptoss as $siglasdeptos){
         $docentesA = Pessoa::listarDocentes();
         $docentesS = Pessoa::listarDocentesAposentadosSenior();
         $docentes = array_merge($docentesA,$docentesS);
+        
+        // obtém os docentes com dupla vinculação que não estão no Replicado
+        $docentesDuploVinculo = CoisasLocais::obterDuplaVinculacao();
 
+        foreach ($docentesDuploVinculo as $ddv) {
+            
+            $docentes[] = [
+                'codpes' => $ddv['codpes'],
+                'nomabvset' => $ddv['depto'],
+                'nompes' => Pessoa::nomeCompleto($ddv['codpes']),
+                'codema' => Pessoa::email($ddv['codpes']),
+                'numtelfmt' => Pessoa::obterRamalUsp($ddv['codpes'])
+            ];
+            
+        }
+        
+//        $docentes[] = [
+//            'codpes' => 2143636,
+//            'nomabvset' => 'GSA',
+//            'nompes' => 'Fernando Antonio Medeiros Marinho',
+//            'codema' => 'fmarinho@usp.br',
+//            'numtelfmt' => '(0xx11)3091-5498 - ramal USP: 915498'
+//        ];
+//
+//        
+//        $docentes[] = [
+//            'codpes' => 208186,
+//            'nomabvset' => 'GSA',
+//            'nompes' => 'Déborah de Oliveira',
+//            'codema' => 'debolive@usp.br',
+//            'numtelfmt' => '(0xx11)3091-8577 - ramal USP: 918577'
+//        ];
+//        
+//        
+//        $docentes[] = [
+//            'codpes' => 74257,
+//            'nomabvset' => 'GMG',
+//            'nompes' => 'Colombo Celso Gaeta Tassinari',
+//            'codema' => 'ccgtassi@usp.br',
+//            'numtelfmt' => '(0xx11)3091-9123 - ramal USP: 919123'
+//        ];
+
+        
+       
         // cria array para cada departamento
         foreach ($depto as $coddepto=>$nomdepto){
             $$nomdepto = array();
@@ -36,7 +80,7 @@ foreach ($siglasdeptoss as $siglasdeptos){
                 salvarFoto($codpes);
 
             }
-            $foto = $homeCode . "/fotos/" . $codpes . ".jpg";
+            $foto = $urlFotos . $codpes . ".jpg";
             $$nomdepto[$codpes]['foto'] = "<img src=$foto />";
             
             $$nomdepto[$codpes]['codpes'] = $codpes;
@@ -77,7 +121,8 @@ foreach ($siglasdeptoss as $siglasdeptos){
 
 // coloca os docentes enviados em tabela
 function imprime_tabela($docs){
-
+    global $urlFotos, $urlDocente;
+    
     $i = 0;
     $tabela = "<figure class='wp-block-table is-style-stripes'>\n";
     $tabela .= "
@@ -115,9 +160,9 @@ function imprime_tabela($docs){
         
         $tabela.= "               
                 <tr>
-                    <td><a href=/docente?codpes={$doc['codpes']} >{$doc['foto']}</a></td>\n
+                    <td><a href={$urlDocente}?codpes={$doc['codpes']} >{$doc['foto']}</a></td>\n
                     <td>
-                            <h3><a href=/docente?codpes={$doc['codpes']} >{$doc['nome']}</a> {$doc['linkLattes']}</h3>
+                            <h3><a href={$urlDocente}?codpes={$doc['codpes']} >{$doc['nome']}</a> {$doc['linkLattes']}</h3>
                             {$doc['departamento']}
                             <br>{$doc['email']}
                             <br>{$doc['telefone']}

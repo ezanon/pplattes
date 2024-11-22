@@ -4,5 +4,7 @@
         "uspdev/wsfoto": "^2.0",
         "guzzlehttp/guzzle": "^7.8",
         "ezanon/coisaslocais": "dev-master"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

@@ -23,14 +23,22 @@ $fonePessoa = Pessoa::obterRamalUsp($codpes);
 
 $ods = CoisasLocais::obterODS($codpes);
 
+//dupla vinculação
+$dv = false;
+if (CoisasLocais::ehDuplaVinculacao($codpes)){
+    $infosdv = CoisasLocais::obterInfoDuplaVinculacao($codpes);
+    $dvi = 'Docente com Dupla Vinculação (' . $infosdv['duplavinculacao_unidade'] . ')';
+    $dv = true;
+}
+
 $caminhoArquivo = __DIR__ . '/fotos/';
 // se foto existe
 if (verificarFotoExiste("{$codpes}.jpg", $caminhoArquivo) == 0){
     salvarFoto($codpes);
 
 }
-$foto = $homeCode . "/fotos/" . $codpes . ".jpg";
 
+$foto = $urlFotos . $codpes . ".jpg";
 
 $idLattes = Lattes::id($codpes);
 $arrayLattes = Lattes::obterArray($codpes);
@@ -45,5 +53,6 @@ $nomesCitacoesLattes = explode(';', $nomeCitacoesLattes);
 $linkLattesPessoa = get_lattes($codpes); 
 $linkOrcidPessoa = get_orcid($codpes);
 
-$depto = Pessoa::obterSiglasSetoresAtivos($codpes);
+if (!$dv) $depto = Pessoa::obterSiglasSetoresAtivos($codpes);
+else $depto[0] = $infosdv['depto'];
 $departamento = $depto[0]=='GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Mineralogia e Geotectônica';

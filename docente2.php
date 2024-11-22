@@ -11,13 +11,25 @@
 <body>
     
 <div class="container mt-5">
+   
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border-0">
+                <div class="card-header border-0 text-left">
+                    <h3><?php echo $nomePessoa; ?></h3> 
+                </div> 
+            </div>
+        </div>
+    </div>
+    
+    
   <div class="row">
     <!-- Célula 1 -->
     <div class="col-md-4">
       <div class="card border-0">
-        <div class="card-header border-0   text-center">
+<!--        <div class="card-header border-0   text-center">
           <h3><?php echo $nomePessoa; ?></h3> 
-        </div>
+        </div>-->
         <div class="card-body  text-center">
           <!-- Área para uma fotografia -->
           <?php echo "<img src=$foto class=img-fluid style=\"max-width: 200px;\">"; ?>
@@ -28,7 +40,7 @@
     <!-- Célula 2 -->
     <div class="col-md-8">
       <div class="card border-0">
-        <div class="card-header border-0">
+        <div class="card-header border-0 mt-3">
           <h5>Informações</h5>
         </div>
         <div class="card-body">
@@ -37,7 +49,12 @@
 <?php
 
 echo "<h5>Departamento</h5>\n";
-echo "<p>$departamento</p>";
+echo "<p>$departamento";
+    if ($dv){
+        echo "<br><em>$dvi</em>";
+    }
+echo "</p>";
+
 echo "<h5>Contato</h5>\n";
 echo "<div class=mb-2><p>$emailPessoa<br>\n\n";
 //echo "Telefone: $fonePessoa</p></div>\n\n";
