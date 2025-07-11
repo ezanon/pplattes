@@ -9,7 +9,7 @@ require_once 'config.php';
 require_once './foto.php';
 require_once './functions.php';
 
-$siglasdeptoss[] = 'GMG,GGG,GSA,GMP,GPE';
+$siglasdeptoss[] = implode(',', array_values($depto));
 
 foreach ($siglasdeptoss as $siglasdeptos){
     
@@ -18,7 +18,7 @@ foreach ($siglasdeptoss as $siglasdeptos){
         $docentesA = Pessoa::listarDocentes();
         $docentesS = Pessoa::listarDocentesAposentadosSenior();
         $docentes = array_merge($docentesA,$docentesS);
-        
+
         // obtém os docentes com dupla vinculação que não estão no Replicado
         $docentesDuploVinculo = CoisasLocais::obterDuplaVinculacao();
 
@@ -60,7 +60,7 @@ foreach ($siglasdeptoss as $siglasdeptos){
             $login = explode("@", $docente['codema']);
             $$nomdepto[$codpes]['login'] = $login[0];
             
-            $$nomdepto[$codpes]['departamento'] = $nomdepto == 'GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Mineralogia e Geotectônica';
+            $$nomdepto[$codpes]['departamento'] = $nomdepto == 'GAA' ? 'GAA: Geologia Ambiental e Aplicada' : 'GMG: Mineralogia e Geotectônica';
 
             $telefone = $docente['numtelfmt'];
             $$nomdepto[$codpes]['telefone'] = $telefone = $docente['numtelfmt'];

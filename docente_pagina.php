@@ -55,4 +55,4 @@ $linkOrcidPessoa = get_orcid($codpes);
 
 if (!$dv) $depto = Pessoa::obterSiglasSetoresAtivos($codpes);
 else $depto[0] = $infosdv['depto'];
-$departamento = $depto[0]=='GSA' ? 'GSA: Geologia Sedimentar e Ambiental' : 'GMG: Mineralogia e Geotectônica';
+$departamento = $depto[0]=='GAA' ? 'GAA: Geologia Ambiental e Aplicada' : 'GMG: Mineralogia e Geotectônica';
